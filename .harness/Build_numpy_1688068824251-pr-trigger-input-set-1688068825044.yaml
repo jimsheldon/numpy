@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_numpy_1688068824251-pr-trigger-input-set
+  identifier: Build_numpy_1688068824251prtriggerinputset
+  orgIdentifier: migrate_demo
+  projectIdentifier: example
+  pipeline:
+    identifier: Build_numpy_1688068824251
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
