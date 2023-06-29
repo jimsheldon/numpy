@@ -1,0 +1,33 @@
+pipeline:
+  identifier: Build_numpy_1688068824251
+  name: Build numpy
+  orgIdentifier: migrate_demo
+  projectIdentifier: example
+  properties:
+    ci:
+      codebase:
+        build: <+input>
+        connectorRef: account.Jim_Sheldon_GitHub
+        repoName: jimsheldon/numpy
+  stages:
+    - stage:
+        identifier: build
+        name: build
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  identifier: echo
+                  name: echo
+                  spec:
+                    command: echo hello world
+                  timeout: ""
+                  type: Run
+          platform:
+            arch: Amd64
+            os: Linux
+          runtime:
+            spec: {}
+            type: Cloud
+        type: CI
