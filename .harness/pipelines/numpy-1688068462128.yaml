@@ -58,7 +58,7 @@ pipeline:
                     command: |
                       whoami
                       pwd
-                      ls -l
+                      ls -la
                       git submodule init
                       git submodule update
                   timeout: ""
