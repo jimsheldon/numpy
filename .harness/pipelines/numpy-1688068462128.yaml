@@ -21,6 +21,9 @@ pipeline:
                   identifier: checkskip
                   name: Check-skip
                   spec:
+                    connectorRef: account.Jim_Sheldon
+                    image: cimg/python:3.9
+                    shell: Bash
                     command: |
                       export git_log=$(git log --max-count=1 --pretty=format:"%B" | tr "\n" " ")
                       echo "Got commit message:"
@@ -32,26 +35,29 @@ pipeline:
                         echo "Skip detected, exiting job ${CIRCLE_JOB} for PR ${CIRCLE_PULL_REQUEST}."
                         circleci-agent step halt;
                       fi
-                    image: cimg/python:3.9
                   timeout: ""
                   type: Run
               - step:
                   identifier: pullchangesfrommerge
                   name: pull changes from merge
                   spec:
+                    connectorRef: account.Jim_Sheldon
+                    image: cimg/python:3.9
+                    shell: Bash
                     command: |
                       if [[ -v CI_PULL_REQUEST ]] ; then git pull --ff-only origin "refs/pull/${CI_PULL_REQUEST//*pull\//}/merge" ; fi
-                    image: cimg/python:3.9
                   timeout: ""
                   type: Run
               - step:
                   identifier: updatesubmodules
                   name: update submodules
                   spec:
+                    connectorRef: account.Jim_Sheldon
+                    image: cimg/python:3.9
+                    shell: Sh
                     command: |
                       git submodule init
                       git submodule update
-                    image: cimg/python:3.9
                   timeout: ""
                   type: Run
               - step:
